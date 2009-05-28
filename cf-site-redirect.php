@@ -18,6 +18,7 @@ function cf_site_redirect() {
 		$req = $_SERVER['REQUEST_URI'];
 		
 		$query = "SELECT * FROM $wpdb->postmeta WHERE meta_key = '".LEGACY_URL_FIELD_NAME."' AND meta_value LIKE '%".$wpdb->escape($req)."%'";
+		$query = apply_filters('cf_site_redirect_query', $query, $req);
 		$result = $wpdb->get_row($query);
 
 		if (!empty($result)) {
