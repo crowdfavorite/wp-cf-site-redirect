@@ -1,0 +1,5 @@
+# CF Site Redirect CHANGELOG
+
+## 1.1
+
+- Bug fix for searching for redirect items
