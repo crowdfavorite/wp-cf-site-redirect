@@ -10,7 +10,7 @@ Author URI: http://crowdfavorite.com/
 /**
  * look for the url as a post meta field and redirect to that post if found
  */
-define('LEGACY_URL_FIELD_NAME','_legacy_url');
+define('LEGACY_URL_FIELD_NAME','_cf_legacy_url');
 
 function cf_site_redirect() {
 	if ( is_404() ) {
