@@ -2,7 +2,7 @@
 /* 
 Plugin Name: CF Site Redirect
 Description: Redirect old url requests to the WordPress equivalent
-Version: 1.1.1
+Version: 1.1.2
 Author: Crowd Favorite
 Author URI: http://crowdfavorite.com/
 */
