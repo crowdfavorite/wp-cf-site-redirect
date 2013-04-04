@@ -1,5 +1,9 @@
 # CF Site Redirect CHANGELOG
 
+## 1.1.2
+
+- Add limit to post meta query
+
 ## 1.1.1
 
 - Tweak to postmeta field to match scraper import data
