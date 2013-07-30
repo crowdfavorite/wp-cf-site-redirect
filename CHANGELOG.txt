@@ -1,5 +1,9 @@
 # CF Site Redirect CHANGELOG
 
+## 1.3
+
+- Added support for attachment redirects to properly redirect to the attached file.
+
 ## 1.2
 
 - Added rudimentary admin screen to manage redirects. This is not very performant and should not be used on large sites at this time.

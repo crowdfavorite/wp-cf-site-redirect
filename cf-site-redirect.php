@@ -2,7 +2,7 @@
 /* 
 Plugin Name: CF Site Redirect
 Description: Redirect old url requests to the WordPress equivalent
-Version: 1.2
+Version: 1.3
 Author: Crowd Favorite
 Author URI: http://crowdfavorite.com/
 */
@@ -17,12 +17,18 @@ function cf_site_redirect() {
 		global $wpdb;
 		$req = $_SERVER['REQUEST_URI'];
 		
-		$query = "SELECT * FROM $wpdb->postmeta WHERE meta_key = '".LEGACY_URL_FIELD_NAME."' AND meta_value LIKE '%".$wpdb->escape($req)."%' LIMIT 1";
+		$query = "SELECT postmeta.post_id, post.post_type FROM $wpdb->postmeta postmeta, $wpdb->posts post WHERE postmeta.post_id = post.ID AND postmeta.meta_key = '".LEGACY_URL_FIELD_NAME."' AND postmeta.meta_value LIKE '%".$wpdb->escape($req)."%' LIMIT 1";
 		$query = apply_filters('cf_site_redirect_query', $query, $req);
 		$result = $wpdb->get_row($query);
 
 		if (!empty($result)) {
-			wp_redirect(get_permalink($result->post_id), 301);
+			if ($result->post_type == 'attachment') {
+				// Special handling to serve the file.
+				wp_redirect(wp_get_attachment_url($result->post_id), 301);
+			}
+			else {
+				wp_redirect(get_permalink($result->post_id), 301);
+			}
 			exit();
 		}
 	}
